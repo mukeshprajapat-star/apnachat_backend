@@ -33,7 +33,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({
-  path: ".env",
+  path: "./.env",
 });
 
 const mongoURI = process.env.MONGO_URI;
