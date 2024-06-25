@@ -53,25 +53,23 @@ cloudinary.config({
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server, {
-  cors: corsOptions,
-});
+const io = new Server(server,cors);
 
 app.set("io", io);
 
 // Using Middlewares Here
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/chat", chatRoute);
 app.use("/api/v1/admin", adminRoute);
 
-app.use(express.static(path.join(__dirname,"../../client/dist")));
+app.use(express.static(path.join(__dirname,"../client/dist")));
 
 app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"../../client/dist/index.html"));
+    res.sendFile(path.resolve(__dirname,"../client/dist/index.html"));
 });
 
 app.get("/", (req, res) => {
