@@ -56,6 +56,7 @@ const server = createServer(app);
 const io = new Server(server, {
   cors: corsOptions,
 });
+io.listen(3000);
 
 app.set("io", io);
 
